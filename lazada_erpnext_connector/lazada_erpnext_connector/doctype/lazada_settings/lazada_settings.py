@@ -25,27 +25,27 @@ from lazada_erpnext_connector.utils.lazada_utils import LazopClient,LazopRequest
 
 
 class LazadaSettings(Document):
-    frappe.whitelist()
+    @frappe.whitelist()
     def get_access_token(self):
         auth = Authentication()
         auth.get_access_token()
-    frappe.whitelist()
+    @frappe.whitelist()
     def get_refresh_token(self):
         auth = Authentication()
         auth.get_refresh_token()
-    frappe.whitelist()
+    @frappe.whitelist()
     def get_products(self):
         prod = Products()
         prod.create_erpnext_items()
-    frappe.whitelist()
+    @frappe.whitelist()
     def get_orders(self):
         ord = Orders()
         ord.create_erpnext_order()
-    frappe.whitelist()
+    @frappe.whitelist()
     def get_transactions(self):
         trans = Transaction()
         trans.create_erpnext_jornal_entry()
-    frappe.whitelist()
+    @frappe.whitelist()
     def get_shippment_pro(self):
         ship_pro = Delivery()
         frappe.msgprint(str(ship_pro.get_shippment_provider()))
@@ -428,17 +428,17 @@ def create_error_log(call,error_code,error):
     doc.error_log=error
     doc.insert(ignore_permissions=True)
 
-frappe.whitelist()
+@frappe.whitelist()
 def get_refresh():
     auth = Authentication()
     auth.get_refresh_token()
 
-frappe.whitelist()
+@frappe.whitelist()
 def get_orders():
     ord = Orders()
     ord.create_erpnext_order()
 
-frappe.whitelist()
+@frappe.whitelist()
 def get_items_back():
     prod = Products()
     prod.create_erpnext_items()
